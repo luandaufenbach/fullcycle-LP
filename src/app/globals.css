@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme {
+  --color-mata: #1e3b2f;
+  --color-mata-escuro: #142a21;
+  --color-rio: #2f5d62;
+  --color-papel: #f5f6f1;
+  --color-grafite: #23271f;
+  --color-ipe: #d9a92e;
+  --color-linha: #d8dcd2;
+
+  --font-serif: var(--font-alegreya), Georgia, serif;
+  --font-sans: var(--font-alegreya-sans), system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply bg-papel font-sans text-grafite antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-serif text-mata;
+    line-height: 1.15;
+    text-wrap: balance;
+  }
+
+  ::selection {
+    @apply bg-mata text-papel;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ipe);
+    outline-offset: 3px;
+  }
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-aparecer {
+  animation: aparecer 0.25s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-aparecer {
+    animation: none;
+  }
+}
